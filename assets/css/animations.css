@@ -12,13 +12,11 @@
 @keyframes siteReveal {
     from {
         opacity: 0;
-        transform: translateY(10px) scale(0.992);
-        filter: blur(3px);
+        transform: translateY(8px);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
+        transform: translateY(0);
     }
 }
 
@@ -44,16 +42,12 @@
 
 @keyframes introPulse {
     from {
-        letter-spacing: 0.04em;
         opacity: 0;
-        transform: translateY(12px) scale(0.985);
-        filter: blur(6px);
+        transform: translateY(10px) scale(0.99);
     }
     to {
-        letter-spacing: 0;
         opacity: 1;
         transform: translateY(0) scale(1);
-        filter: blur(0);
     }
 }
 
@@ -94,8 +88,8 @@
     background: #000;
     color: #fff;
     pointer-events: auto;
-    transition: opacity 0.56s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.56s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html.intro-pending .intro-screen {
@@ -121,12 +115,11 @@ html.intro-pending .intro-screen {
     line-height: 1;
     text-transform: lowercase;
     opacity: 0;
-    transform: translateY(12px) scale(0.985);
-    filter: blur(6px);
+    transform: translateY(10px) scale(0.99);
 }
 
 .intro-screen.is-visible .intro-word {
-    animation: introPulse 0.64s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: introPulse 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .intro-screen.is-exiting {
@@ -141,29 +134,25 @@ html.intro-pending body.home-page {
 
 html.intro-pending body.home-page > :not(.intro-screen) {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(10px);
     pointer-events: none;
 }
 
 body.intro-complete > :not(.intro-screen) {
-    animation: siteReveal 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: siteReveal 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .reveal {
     opacity: 0;
-    transform: translate3d(0, 18px, 0) scale(0.992);
-    filter: blur(4px);
-    transition: opacity 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-                filter 0.68s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translate3d(0, 14px, 0);
+    transition: opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
     transition-delay: var(--reveal-delay, 0ms);
-    will-change: opacity, transform, filter;
 }
 
 .reveal.is-revealed {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-    filter: blur(0);
+    transform: translate3d(0, 0, 0);
 }
 
 .hero-badge {
@@ -187,6 +176,5 @@ body.intro-complete > :not(.intro-screen) {
     .reveal {
         opacity: 1;
         transform: none;
-        filter: none;
     }
 }

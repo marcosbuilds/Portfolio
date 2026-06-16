@@ -194,18 +194,20 @@
 .project-card {
     padding: 2.5rem;
     border-radius: var(--border-radius);
-    transition: var(--transition);
+    transition:
+        transform 0.32s ease,
+        box-shadow 0.32s ease,
+        border-color 0.32s ease;
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow: visible;
+    overflow: hidden;
     isolation: isolate;
 }
 
 .project-card:hover {
-    transform: translateY(-10px) scale(1.01);
-    box-shadow: 0 16px 48px color-mix(in srgb, var(--primary-color) 30%, transparent);
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 44px color-mix(in srgb, var(--primary-color) 24%, transparent);
 }
 
 .project-card.featured {
@@ -246,12 +248,14 @@
     position: relative;
     background: var(--surface-color);
     border: 1px solid var(--glass-border);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition:
+        border-color 0.28s ease,
+        box-shadow 0.28s ease;
     aspect-ratio: 16 / 9;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 5;
+    z-index: 1;
     isolation: isolate;
 }
 
@@ -262,20 +266,18 @@
     border-radius: var(--border-radius);
     object-fit: cover;
     object-position: center;
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
-                border-radius 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                filter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition:
+        transform 0.34s ease,
+        filter 0.34s ease;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
     image-rendering: high-quality;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transform-origin: center center;
-    will-change: transform;
     cursor: pointer;
     position: relative;
-    z-index: 6;
+    z-index: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-width: 100%;
@@ -283,76 +285,51 @@
     transform: scale(1) translateY(0);
 }
 
-.project-image:hover {
-    transform: scale(1.35) translateY(-25px);
-    border-radius: calc(var(--border-radius) + 4px);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
-    z-index: 99999;
-    position: relative;
-    filter: brightness(1.05);
-    overflow: visible;
-    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                border-radius 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                filter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.project-image-wrapper:hover {
-    z-index: 10;
-    overflow: visible;
-}
-
-.project-card.featured .project-image-wrapper {
-    z-index: 100;
-}
-
-.project-card.featured:hover .project-image-wrapper {
-    z-index: 99998;
-}
-
-.project-card.featured .project-image {
-    z-index: 101;
-}
-
-.project-card.featured:hover .project-image {
-    z-index: 99999;
-}
-
-.project-image-wrapper:not(:hover) .project-image {
-    transform: scale(1) translateY(0) !important;
-}
-
 .project-card:hover .project-image-wrapper {
-    z-index: 10000;
+    border-color: color-mix(in srgb, var(--primary-color) 42%, var(--glass-border));
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--primary-color) 14%, transparent);
+}
+
+.project-card:hover .project-image,
+.project-card:focus-within .project-image,
+.project-card.is-network-active .project-image {
+    transform: scale(1.018);
+    filter: saturate(1.04) contrast(1.02);
 }
 
 .project-network {
-    --network-center-y: 53%;
-    position: absolute;
-    inset: 0;
-    z-index: 8;
+    --network-center-y: 52%;
+    position: relative;
+    min-height: 12rem;
+    margin-bottom: 1.5rem;
+    border-radius: calc(var(--border-radius) - 2px);
+    background:
+        radial-gradient(circle at 50% var(--network-center-y), color-mix(in srgb, var(--primary-color) 16%, transparent), transparent 39%),
+        linear-gradient(135deg, color-mix(in srgb, var(--surface-color) 78%, var(--primary-color)), color-mix(in srgb, var(--surface-color) 82%, var(--accent-color)));
+    border: 1px solid color-mix(in srgb, var(--primary-color) 24%, var(--glass-border));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
     pointer-events: none;
-    opacity: 0;
-    transform: scale(0.96);
+    overflow: hidden;
+    opacity: 0.88;
+    transform: translateY(0);
     transition:
-        opacity 0.35s ease,
-        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease,
+        transform 0.28s ease;
 }
 
 .project-network::before {
     content: '';
     position: absolute;
-    inset: 6%;
-    border-radius: calc(var(--border-radius) - 2px);
+    inset: 0;
     background:
-        radial-gradient(circle at 50% var(--network-center-y), color-mix(in srgb, var(--primary-color) 30%, transparent), transparent 38%),
-        linear-gradient(135deg, color-mix(in srgb, var(--bg-color) 78%, transparent), color-mix(in srgb, var(--secondary-color) 26%, transparent));
-    border: 1px solid color-mix(in srgb, var(--primary-color) 38%, var(--glass-border));
-    opacity: 0;
-    transform: scale(0.92);
-    transition:
-        opacity 0.35s ease,
-        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        linear-gradient(color-mix(in srgb, var(--primary-color) 10%, transparent) 1px, transparent 1px),
+        linear-gradient(90deg, color-mix(in srgb, var(--primary-color) 10%, transparent) 1px, transparent 1px);
+    background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 24%, transparent 78%);
+    mask-image: radial-gradient(circle at 50% 50%, #000 24%, transparent 78%);
+    opacity: 0.28;
 }
 
 .network-core,
@@ -365,10 +342,12 @@
     line-height: 1;
     white-space: nowrap;
     letter-spacing: 0;
-    transform: translate(-50%, -50%) scale(0.82);
+    transform: translate(-50%, -50%) scale(0.94);
     transition:
-        opacity 0.28s ease,
-        transform 0.48s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 0.24s ease,
+        transform 0.3s ease,
+        border-color 0.24s ease,
+        box-shadow 0.24s ease;
 }
 
 .network-core {
@@ -383,31 +362,31 @@
     color: white;
     font-size: clamp(0.78rem, 2.2vw, 0.95rem);
     font-weight: 800;
-    box-shadow: 0 14px 36px color-mix(in srgb, var(--primary-color) 34%, transparent);
-    opacity: 0;
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--primary-color) 28%, transparent);
+    opacity: 0.92;
 }
 
 .network-node {
     z-index: 3;
-    min-height: 2rem;
-    padding: 0.45rem 0.72rem;
+    min-height: 2.35rem;
+    padding: 0.4rem 0.72rem 0.4rem 0.5rem;
     border-radius: 999px;
     background: color-mix(in srgb, var(--bg-color) 76%, var(--primary-color));
-    border: 1px solid color-mix(in srgb, var(--primary-color) 54%, var(--glass-border));
+    border: 1px solid color-mix(in srgb, var(--primary-color) 28%, var(--glass-border));
     color: var(--text-primary);
     font-size: clamp(0.72rem, 1.8vw, 0.82rem);
     font-weight: 700;
-    box-shadow: 0 10px 26px color-mix(in srgb, var(--primary-color) 22%, transparent);
-    opacity: 0;
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--primary-color) 14%, transparent);
+    opacity: 0.5;
 }
 
-.network-node::before {
-    content: '';
-    width: 0.42rem;
-    height: 0.42rem;
-    border-radius: 50%;
-    background: var(--accent-color);
-    box-shadow: 0 0 0 0.24rem color-mix(in srgb, var(--accent-color) 18%, transparent);
+.network-logo {
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 0.38rem;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.12rem;
     flex-shrink: 0;
 }
 
@@ -420,13 +399,13 @@
     height: 2px;
     border-radius: 999px;
     background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    opacity: 0;
+    opacity: 0.34;
     overflow: hidden;
-    transform: rotate(var(--line-angle)) scaleX(0);
+    transform: rotate(var(--line-angle)) scaleX(0.36);
     transform-origin: left center;
     transition:
         opacity 0.2s ease,
-        transform 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+        transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .network-line::after {
@@ -473,37 +452,18 @@
 
 .neural-network .network-line {
     height: 3px;
-    box-shadow: 0 0 14px color-mix(in srgb, var(--accent-color) 58%, transparent);
-}
-
-.project-card:hover .project-image,
-.project-card:focus-within .project-image,
-.project-card.is-network-active .project-image {
-    transform: scale(1.04) translateY(0);
-    border-radius: var(--border-radius);
-    box-shadow: none;
-    filter: brightness(0.48) saturate(0.86);
-    z-index: 1;
-}
-
-.project-card.featured:hover .project-image,
-.project-card.featured:focus-within .project-image,
-.project-card.featured.is-network-active .project-image {
-    z-index: 1;
+    box-shadow: 0 0 10px color-mix(in srgb, var(--accent-color) 38%, transparent);
 }
 
 .project-card:hover .project-network,
 .project-card:focus-within .project-network,
 .project-card.is-network-active .project-network {
     opacity: 1;
-    transform: scale(1);
-}
-
-.project-card:hover .project-network::before,
-.project-card:focus-within .project-network::before,
-.project-card.is-network-active .project-network::before {
-    opacity: 1;
-    transform: scale(1);
+    border-color: color-mix(in srgb, var(--primary-color) 46%, var(--glass-border));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 12px 30px color-mix(in srgb, var(--primary-color) 14%, transparent);
+    transform: translateY(-2px);
 }
 
 .project-card:hover .network-core,
@@ -514,6 +474,8 @@
 .project-card.is-network-active .network-node {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
+    border-color: color-mix(in srgb, var(--primary-color) 54%, var(--glass-border));
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--primary-color) 22%, transparent);
 }
 
 .project-card:hover .network-line,
@@ -527,7 +489,7 @@
 .project-card:focus-within .network-line::after,
 .project-card.is-network-active .network-line::after {
     opacity: 1;
-    animation: networkImpulse 1.45s ease-out 0.24s infinite;
+    animation: networkImpulse 1.15s ease-out 0.18s 1;
 }
 
 .project-card:hover .line-top,

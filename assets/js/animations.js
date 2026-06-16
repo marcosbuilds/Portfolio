@@ -45,7 +45,7 @@
 
         elements.forEach((element, index) => {
             element.classList.add('reveal');
-            element.style.setProperty('--reveal-delay', `${Math.min(index * 55, 360)}ms`);
+            element.style.setProperty('--reveal-delay', `${Math.min(index * 24, 160)}ms`);
             observer.observe(element);
         });
     }
@@ -91,7 +91,6 @@
             const deactivate = () => card.classList.remove('is-network-active');
 
             card.addEventListener('pointerenter', activate, { passive: true });
-            card.addEventListener('pointermove', activate, { passive: true });
             card.addEventListener('pointerleave', deactivate, { passive: true });
             card.addEventListener('focusin', activate);
             card.addEventListener('focusout', (event) => {

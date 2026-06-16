@@ -74,14 +74,14 @@
             }
         }, { once: true });
 
-        await delay(80);
-        await showWord(getText('intro.hey', 'hey'), 700);
+        await delay(60);
+        await showWord(getText('intro.hey', 'hey'), 560);
         if (introFinished) return;
-        await showWord(getText('intro.identity', 'i am'), 780);
+        await showWord(getText('intro.identity', 'i am'), 620);
         if (introFinished) return;
 
         screen.classList.add('is-exiting');
-        await delay(560);
+        await delay(360);
         finishIntro();
     }
 
