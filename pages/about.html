@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre mim | Marcos Pereira</title>
+    <title data-i18n="title.about">Sobre mim | Marcos Pereira</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
             padding-bottom: 2rem;
             border-bottom: 1px solid var(--glass-border);
         }
-        
+
         .back-button {
             display: flex;
             align-items: center;
@@ -32,18 +32,18 @@
             transition: var(--transition);
             cursor: pointer;
         }
-        
+
         .back-button:hover {
             background: var(--primary-color);
             transform: translateX(-5px);
             border-color: var(--primary-color);
         }
-        
+
         .back-button svg {
             width: 24px;
             height: 24px;
         }
-        
+
         .page-title {
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
@@ -53,12 +53,12 @@
             background-clip: text;
             margin: 0;
         }
-        
+
         .content-section {
             max-width: 1000px;
             margin: 0 auto;
         }
-        
+
         .timeline-item {
             margin-bottom: 3rem;
             padding: 2rem;
@@ -68,17 +68,17 @@
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
         }
-        
+
         .timeline-item {
             filter: blur(0);
             opacity: 1;
         }
-        
+
         .timeline-items-container:hover .timeline-item:not(:hover) {
             filter: blur(3px);
             opacity: 0.5;
         }
-        
+
         .timeline-item:hover {
             transform: scale(1.05);
             z-index: 10;
@@ -87,31 +87,31 @@
             filter: blur(0) !important;
             opacity: 1 !important;
         }
-        
+
         .timeline-items-container {
             position: relative;
         }
-        
+
         .timeline-year {
             color: var(--primary-color);
             font-weight: 700;
             font-size: 1.1rem;
             margin-bottom: 0.5rem;
         }
-        
+
         .timeline-content {
             color: var(--text-secondary);
             line-height: 1.8;
             font-size: 1.05rem;
         }
-        
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
-        
+
         .stat-card {
             padding: 2rem;
             border-radius: var(--border-radius);
@@ -119,26 +119,26 @@
             border: 1px solid var(--glass-border);
             text-align: center;
         }
-        
+
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
-        
+
         .stat-label {
             color: var(--text-secondary);
             font-size: 0.95rem;
         }
-        
+
         .section-heading {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-primary);
             margin: 3rem 0 1.5rem;
         }
-        
+
         .paragraph {
             color: var(--text-secondary);
             line-height: 1.9;
@@ -160,7 +160,7 @@
                     <span class="brand-name hidden" id="brandNameHeader">Marcos Pereira</span>
                 </a>
             </div>
-            <button class="theme-toggle" aria-label="Alterar tema">
+            <button class="theme-toggle" aria-label="Alterar tema" data-i18n-aria-label="theme.toggle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"/>
                     <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
@@ -172,80 +172,80 @@
     <section class="about-section" style="padding: 8rem 0 4rem;">
         <div class="container">
             <div class="page-header">
-                <a href="../index.html" class="back-button">
+                <a href="../index.html" class="back-button" aria-label="Voltar para o início" data-i18n-aria-label="common.backHome">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M19 12H5M12 19l-7-7 7-7"/>
                     </svg>
                 </a>
-                <h1 class="page-title">Sobre mim</h1>
+                <h1 class="page-title" data-i18n="about.title">Sobre mim</h1>
             </div>
-            
+
             <div class="content-section">
-                <p class="paragraph" style="font-size: 1.3rem; color: var(--text-primary); font-weight: 500; margin-bottom: 2rem;">
+                <p class="paragraph" style="font-size: 1.3rem; color: var(--text-primary); font-weight: 500; margin-bottom: 2rem;" data-i18n="about.intro">
                     Me chamo Marcos Pereira, nascido em 2008 com uma vontade intensa em atuar prioritariamente na tecnologia.
                 </p>
-                
+
                 <div class="stats-grid">
                     <div class="stat-card glass">
                         <div class="stat-number" id="age">18</div>
-                        <div class="stat-label">Anos de idade</div>
+                        <div class="stat-label" data-i18n="about.age">Anos de idade</div>
                     </div>
                     <div class="stat-card glass">
                         <div class="stat-number">3+</div>
-                        <div class="stat-label">Anos de experiência</div>
+                        <div class="stat-label" data-i18n="about.experience">Anos de experiência</div>
                     </div>
                     <div class="stat-card glass">
                         <div class="stat-number">100+</div>
-                        <div class="stat-label">Mensagens simultâneas</div>
+                        <div class="stat-label" data-i18n="about.messages">Mensagens simultâneas</div>
                     </div>
                     <div class="stat-card glass">
                         <div class="stat-number">∞</div>
-                        <div class="stat-label">Vontade de aprender</div>
+                        <div class="stat-label" data-i18n="about.learning">Vontade de aprender</div>
                     </div>
                 </div>
-                
-                <h2 class="section-heading">Minha Jornada</h2>
-                
+
+                <h2 class="section-heading" data-i18n="about.journey">Minha Jornada</h2>
+
                 <div class="timeline-items-container">
                     <div class="timeline-item glass">
                         <div class="timeline-year">~2023 (15 anos)</div>
-                        <div class="timeline-content">
+                        <div class="timeline-content" data-i18n="about.timeline1">
                             Desde aproximadamente os 15 anos, venho mexendo e procurando aprender cada vez mais na tecnologia, principalmente em IAs. Comecei desenvolvendo minis projetos de sites, webviews usando HTML, CSS e JavaScript.
                         </div>
                     </div>
-                    
+
                     <div class="timeline-item glass">
                         <div class="timeline-year">2023-2024</div>
-                        <div class="timeline-content">
+                        <div class="timeline-content" data-i18n="about.timeline2">
                             Quando aprendi o suficiente, decidi atuar em áreas mais próximas de IAs, por conta da surpresa que o ChatGPT me fez sentir. Criar algo, dar vida é uma sensação única. Mesmo que, de fato, eu não crie do absoluto zero ainda, usando modelos de linguagem natural consegui alavancar e fazer vários projetos pessoais que tiveram bons resultados.
                         </div>
                     </div>
-                    
+
                     <div class="timeline-item glass">
                         <div class="timeline-year">2025</div>
-                        <div class="timeline-content">
+                        <div class="timeline-content" data-i18n="about.timeline3">
                             Desenvolvi projetos como o Neural Engine, um sistema de atendimento inteligente que consegue gerenciar 100+ mensagens simultâneas. Continuo explorando novas tecnologias e aprimorando minhas habilidades em desenvolvimento de software e integração de IAs.
                         </div>
                     </div>
                 </div>
-                
-                <h2 class="section-heading">Filosofia de Trabalho</h2>
-                <p class="paragraph">
+
+                <h2 class="section-heading" data-i18n="about.philosophy">Filosofia de Trabalho</h2>
+                <p class="paragraph" data-i18n="about.philosophyText">
                     Acredito que a tecnologia deve ser acessível e útil. Cada projeto que desenvolvo busca resolver problemas reais, utilizando as melhores ferramentas disponíveis. Mesmo não criando do zero, a capacidade de integrar, adaptar e melhorar tecnologias existentes é uma habilidade valiosa.
                 </p>
-                
-                <p class="paragraph">
+
+                <p class="paragraph" data-i18n="about.aiText">
                     Minha paixão por IAs vem da capacidade que elas têm de transformar ideias em realidade, de automatizar processos complexos e de criar soluções que realmente fazem diferença. O Neural Engine é um exemplo disso - uma solução prática que demonstra o poder da integração inteligente de tecnologias.
                 </p>
-                
-                <h2 class="section-heading">Objetivos</h2>
-                <p class="paragraph">
+
+                <h2 class="section-heading" data-i18n="about.goals">Objetivos</h2>
+                <p class="paragraph" data-i18n="about.goalsText">
                     Continuar aprendendo e desenvolvendo projetos que impactem positivamente. Busco oportunidades para aplicar minhas habilidades em ambientes profissionais, contribuindo com soluções inovadoras e eficientes.
                 </p>
-                
+
                 <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--glass-border);">
-                    <a href="../index.html#skills" class="btn btn-primary">Ver Habilidades</a>
-                    <a href="../index.html#projects" class="btn btn-secondary" style="margin-left: 1rem;">Ver Projetos</a>
+                    <a href="../index.html#skills" class="btn btn-primary" data-i18n="about.viewSkills">Ver Habilidades</a>
+                    <a href="../index.html#projects" class="btn btn-secondary" style="margin-left: 1rem;" data-i18n="about.viewProjects">Ver Projetos</a>
                 </div>
             </div>
         </div>
@@ -260,6 +260,7 @@
             ageElement.textContent = age;
         }
     </script>
+    <script src="../assets/js/i18n.js"></script>
     <script src="../assets/js/theme.js"></script>
     <script src="../assets/js/header.js"></script>
     <script src="../assets/js/animations.js"></script>

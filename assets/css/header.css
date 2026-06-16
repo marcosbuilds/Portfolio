@@ -37,7 +37,7 @@
     margin: 0 auto;
     padding: 1.25rem 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     transition: var(--transition);
 }
@@ -97,12 +97,65 @@
     justify-content: center;
     transition: var(--transition);
     border: 1px solid var(--glass-border);
+    margin-left: auto;
 }
 
 .theme-toggle:hover {
     background: var(--primary-color);
     transform: scale(1.05);
     box-shadow: 0 0 24px rgba(249, 115, 22, 0.5);
+}
+
+.language-toggle + .theme-toggle {
+    margin-left: 0.75rem;
+}
+
+.language-toggle {
+    min-width: 74px;
+    height: 48px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    transition: var(--transition);
+    margin-left: auto;
+    position: relative;
+    z-index: 2001;
+}
+
+.language-toggle:hover,
+.language-toggle:focus-visible {
+    color: var(--text-primary);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 24px rgba(249, 115, 22, 0.35);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.language-option {
+    opacity: 0.55;
+    transition: color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.language-option.active {
+    color: var(--primary-color);
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.language-divider {
+    opacity: 0.45;
 }
 
 .theme-toggle svg {
@@ -224,32 +277,43 @@
     .dropdown-menu {
         display: none !important;
     }
-    
+
     .navbar-brand {
         cursor: default;
     }
-    
+
     .navbar-brand:hover {
         opacity: 1;
     }
 }
 
 @media (max-width: 768px) {
+    .language-toggle {
+        min-width: 64px;
+        height: 44px;
+        font-size: 0.78rem;
+    }
+
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+    }
+
     .menu-content {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .dropdown-menu {
         width: 95%;
         padding: 1.5rem;
         max-width: 95%;
     }
-    
+
     .menu-column {
         gap: 0.75rem;
     }
-    
+
     .menu-item {
         font-size: 0.9rem;
         padding: 0.625rem 0.875rem;

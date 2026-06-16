@@ -15,7 +15,17 @@
 
 .title-icon {
     font-size: 0.8em;
-    filter: grayscale(0);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    -webkit-text-fill-color: currentColor;
+}
+
+.title-icon svg {
+    width: 1em;
+    height: 1em;
+    display: block;
 }
 
 .skills-grid {
@@ -28,10 +38,13 @@
     padding: 2.5rem;
     border-radius: var(--border-radius);
     transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
 }
 
 .skill-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px) scale(1.01);
     box-shadow: 0 16px 48px rgba(249, 115, 22, 0.3);
     transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -190,7 +203,7 @@
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px) scale(1.01);
     box-shadow: 0 16px 48px rgba(249, 115, 22, 0.3);
     transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -474,5 +487,58 @@
     border-top: 1px solid var(--glass-border);
     color: var(--text-secondary);
     background: rgba(10, 14, 39, 0.5);
+}
+
+.skill-card::before,
+.project-card::before,
+.feature-card::before,
+.stat-card::before,
+.metric-card::before,
+.comment-item::before,
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        420px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+        rgba(255, 255, 255, 0.14),
+        transparent 42%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+    z-index: 0;
+}
+
+.skill-card:hover::before,
+.project-card:hover::before,
+.feature-card:hover::before,
+.stat-card:hover::before,
+.metric-card:hover::before,
+.comment-item:hover::before,
+.timeline-item:hover::before {
+    opacity: 1;
+}
+
+.skill-card > *,
+.project-card > *,
+.feature-card > *,
+.stat-card > *,
+.metric-card > *,
+.comment-item > *,
+.timeline-item > * {
+    position: relative;
+    z-index: 1;
+}
+
+.feature-card,
+.stat-card,
+.metric-card,
+.comment-item,
+.timeline-item {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
 }
 

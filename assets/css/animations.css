@@ -1,11 +1,24 @@
 @keyframes backgroundShift {
-    0%, 100% { 
+    0%, 100% {
         transform: translate(0, 0) scale(1);
         opacity: 0.15;
     }
-    50% { 
+    50% {
         transform: translate(-30px, -30px) scale(1.1);
         opacity: 0.2;
+    }
+}
+
+@keyframes siteReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.985);
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
     }
 }
 
@@ -17,6 +30,30 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes softFloat {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        transform: translate3d(0, -8px, 0);
+    }
+}
+
+@keyframes introPulse {
+    from {
+        letter-spacing: 0.08em;
+        opacity: 0;
+        transform: translateY(22px) scale(0.96);
+        filter: blur(14px);
+    }
+    to {
+        letter-spacing: 0.01em;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
     }
 }
 
@@ -32,10 +69,10 @@
 }
 
 @keyframes pulse {
-    0%, 100% { 
+    0%, 100% {
         box-shadow: 0 0 0 4px var(--primary-color);
     }
-    50% { 
+    50% {
         box-shadow: 0 0 0 8px rgba(249, 115, 22, 0.3);
     }
 }
@@ -48,3 +85,108 @@
     animation: slideUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
+.intro-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    place-items: center;
+    background: #000;
+    color: #fff;
+    pointer-events: auto;
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html.intro-pending .intro-screen {
+    display: grid;
+}
+
+.intro-screen[hidden] {
+    display: none !important;
+}
+
+.intro-content {
+    position: relative;
+    min-width: min(90vw, 520px);
+    min-height: 120px;
+    display: grid;
+    place-items: center;
+}
+
+.intro-word {
+    display: block;
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: lowercase;
+    opacity: 0;
+    transform: translateY(22px) scale(0.96);
+    filter: blur(14px);
+}
+
+.intro-screen.is-visible .intro-word {
+    animation: introPulse 0.76s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.intro-screen.is-exiting {
+    opacity: 0;
+    transform: scale(1.04);
+}
+
+html.intro-pending body.home-page {
+    background: #000;
+    overflow: hidden;
+}
+
+html.intro-pending body.home-page > :not(.intro-screen) {
+    opacity: 0;
+    transform: translateY(18px);
+    pointer-events: none;
+}
+
+body.intro-complete > :not(.intro-screen) {
+    animation: siteReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0) scale(0.985);
+    filter: blur(8px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform, filter;
+}
+
+.reveal.is-revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+}
+
+.hero-badge {
+    animation: softFloat 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+    }
+
+    .intro-screen {
+        display: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}

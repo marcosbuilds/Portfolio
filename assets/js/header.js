@@ -42,12 +42,14 @@ function closeMenu() {
 function initMenuListeners() {
     const navbar = document.querySelector('.navbar');
     const themeToggle = document.querySelector('.theme-toggle');
+    const languageToggle = document.querySelector('.language-toggle');
 
     if (header && dropdownMenu && navbar) {
         navbar.addEventListener('mouseenter', (e) => {
             const target = e.target;
             const isOnThemeToggle = themeToggle && (themeToggle.contains(target) || target === themeToggle || target.closest('.theme-toggle'));
-            if (!isOnThemeToggle) {
+            const isOnLanguageToggle = languageToggle && (languageToggle.contains(target) || target === languageToggle || target.closest('.language-toggle'));
+            if (!isOnThemeToggle && !isOnLanguageToggle) {
                 showMenu();
             }
         });
@@ -56,9 +58,10 @@ function initMenuListeners() {
             const relatedTarget = e.relatedTarget;
             const isGoingToMenu = dropdownMenu && (dropdownMenu.contains(relatedTarget) || relatedTarget === dropdownMenu);
             const isGoingToThemeToggle = themeToggle && (themeToggle.contains(relatedTarget) || relatedTarget === themeToggle || (relatedTarget && relatedTarget.closest('.theme-toggle')));
+            const isGoingToLanguageToggle = languageToggle && (languageToggle.contains(relatedTarget) || relatedTarget === languageToggle || (relatedTarget && relatedTarget.closest('.language-toggle')));
             const isStillOnNavbar = navbar && (navbar.contains(relatedTarget) || relatedTarget === navbar);
-            
-            if (!isGoingToMenu && !isGoingToThemeToggle && !isStillOnNavbar) {
+
+            if (!isGoingToMenu && !isGoingToThemeToggle && !isGoingToLanguageToggle && !isStillOnNavbar) {
                 hideMenu();
             }
         });
@@ -86,7 +89,7 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener('click', (e) => {
-    if (dropdownMenu && !dropdownMenu.contains(e.target) && 
+    if (dropdownMenu && !dropdownMenu.contains(e.target) &&
         (!navbarBrand || !navbarBrand.contains(e.target)) &&
         (!header || !header.contains(e.target))) {
         closeMenu();
@@ -95,7 +98,7 @@ document.addEventListener('click', (e) => {
 
 function updateOnScroll() {
     const currentScroll = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
-    
+
     if (header) {
         if (currentScroll > 100) {
             header.classList.add('scrolled');
@@ -117,7 +120,7 @@ function updateOnScroll() {
             }
         }
     }
-    
+
     ticking = false;
 }
 
@@ -134,25 +137,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
         if (href === '#') return;
-        
+
         e.preventDefault();
         let target = document.querySelector(href);
-        
+
         if (href === '#neural-engine') {
             target = document.getElementById('neural-engine-card');
         } else if (href === '#other-projects') {
             target = document.getElementById('other-projects-card');
         }
-        
+
         if (target) {
             const headerHeight = headerElement ? headerElement.offsetHeight : 80;
             const targetPosition = target.offsetTop - headerHeight;
-            
+
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
             });
-            
+
             closeMenu();
         }
     });

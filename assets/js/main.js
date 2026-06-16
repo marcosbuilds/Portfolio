@@ -1,1 +1,1 @@
-console.log('Portfolio initialized');
+document.body.classList.add('portfolio-ready');

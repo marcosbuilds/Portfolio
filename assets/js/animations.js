@@ -1,31 +1,97 @@
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-};
+(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealSelector = [
+        '.hero-badge',
+        '.hero-title',
+        '.hero-subtitle',
+        '.hero-description',
+        '.hero-buttons',
+        '.page-header',
+        '.section-title',
+        '.skill-card',
+        '.project-card',
+        '.projects-note',
+        '.timeline-item',
+        '.stat-card',
+        '.feature-card',
+        '.metric-card',
+        '.comparison-section',
+        '.highlight-box',
+        '.cta-section',
+        '.content-section > .paragraph',
+        '.section-heading',
+        '.comment-panel',
+        '.comments-section'
+    ].join(',');
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
-            entry.target.style.opacity = '1';
-            observer.unobserve(entry.target);
+    function initReveal() {
+        const elements = [...document.querySelectorAll(revealSelector)];
+
+        if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+            elements.forEach((element) => element.classList.add('is-revealed'));
+            return;
         }
-    });
-}, observerOptions);
 
-document.querySelectorAll('.skill-card, .project-card').forEach((el, index) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
-    el.style.animationDelay = `${index * 0.08}s`;
-    observer.observe(el);
-});
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -70px 0px'
+        });
 
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        document.body.style.opacity = '1';
-    }, 100);
-});
+        elements.forEach((element, index) => {
+            element.classList.add('reveal');
+            element.style.setProperty('--reveal-delay', `${Math.min(index * 55, 360)}ms`);
+            observer.observe(element);
+        });
+    }
 
+    function initPointerGlow() {
+        if (prefersReducedMotion || !window.matchMedia('(hover: hover)').matches) return;
+
+        document.querySelectorAll('.skill-card, .project-card, .feature-card, .stat-card, .metric-card, .comment-item, .timeline-item').forEach((card) => {
+            card.addEventListener('pointermove', (event) => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--pointer-x', `${event.clientX - rect.left}px`);
+                card.style.setProperty('--pointer-y', `${event.clientY - rect.top}px`);
+            });
+        });
+    }
+
+    function initHeroDepth() {
+        const heroContent = document.querySelector('.hero-content');
+        if (!heroContent || prefersReducedMotion) return;
+
+        let ticking = false;
+
+        function update() {
+            const progress = Math.min(window.scrollY / 700, 1);
+            heroContent.style.transform = `translate3d(0, ${progress * -18}px, 0)`;
+            heroContent.style.opacity = String(1 - progress * 0.18);
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (ticking) return;
+            window.requestAnimationFrame(update);
+            ticking = true;
+        }, { passive: true });
+    }
+
+    function init() {
+        document.body.classList.add('page-loaded');
+        initReveal();
+        initPointerGlow();
+        initHeroDepth();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();

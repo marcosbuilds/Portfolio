@@ -80,6 +80,17 @@
         padding: 0.875rem 1rem;
     }
 
+    .language-toggle {
+        min-width: 58px;
+        height: 42px;
+        font-size: 0.72rem;
+    }
+
+    .theme-toggle {
+        width: 42px;
+        height: 42px;
+    }
+
     .brand-name {
         font-size: 1.1rem;
     }
