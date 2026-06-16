@@ -7,6 +7,8 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    --cursor-x: 50vw;
+    --cursor-y: 45vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -57,12 +59,44 @@ body::before {
     pointer-events: none;
 }
 
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(
+            560px circle at var(--cursor-x) var(--cursor-y),
+            rgba(249, 115, 22, 0.18),
+            rgba(99, 102, 241, 0.08) 36%,
+            transparent 66%
+        );
+    opacity: 0.78;
+    z-index: -1;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    will-change: background;
+}
+
 .glass {
     background: var(--glass-bg);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     border: 1px solid var(--glass-border);
     box-shadow: var(--shadow);
+}
+
+p,
+a,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+small {
+    overflow-wrap: break-word;
 }
 
 .container {
@@ -92,5 +126,18 @@ section {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-color);
+}
+
+@media (hover: none) {
+    body::after {
+        opacity: 0.38;
+        background:
+            radial-gradient(
+                520px circle at 50% 24%,
+                rgba(249, 115, 22, 0.14),
+                rgba(99, 102, 241, 0.06) 40%,
+                transparent 70%
+            );
+    }
 }
 

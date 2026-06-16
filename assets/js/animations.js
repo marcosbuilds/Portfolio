@@ -82,11 +82,54 @@
         }, { passive: true });
     }
 
+    function initBackgroundCursor() {
+        if (prefersReducedMotion || !window.matchMedia('(hover: hover)').matches) return;
+
+        const root = document.documentElement;
+        let targetX = window.innerWidth / 2;
+        let targetY = window.innerHeight * 0.45;
+        let currentX = targetX;
+        let currentY = targetY;
+        let frameId = null;
+
+        function render() {
+            currentX += (targetX - currentX) * 0.12;
+            currentY += (targetY - currentY) * 0.12;
+            root.style.setProperty('--cursor-x', `${currentX.toFixed(1)}px`);
+            root.style.setProperty('--cursor-y', `${currentY.toFixed(1)}px`);
+
+            if (Math.abs(targetX - currentX) > 0.2 || Math.abs(targetY - currentY) > 0.2) {
+                frameId = window.requestAnimationFrame(render);
+            } else {
+                frameId = null;
+            }
+        }
+
+        function requestRender() {
+            if (frameId === null) {
+                frameId = window.requestAnimationFrame(render);
+            }
+        }
+
+        window.addEventListener('pointermove', (event) => {
+            targetX = event.clientX;
+            targetY = event.clientY;
+            requestRender();
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+            targetX = window.innerWidth / 2;
+            targetY = window.innerHeight * 0.45;
+            requestRender();
+        }, { passive: true });
+    }
+
     function init() {
         document.body.classList.add('page-loaded');
         initReveal();
         initPointerGlow();
         initHeroDepth();
+        initBackgroundCursor();
     }
 
     if (document.readyState === 'loading') {

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="title.home">Marcos Pereira | Desenvolvedor de Software</title>
+    <title data-i18n="title.home">Marcos Pereira | Software Developer</title>
     <script>
         (() => {
             try {
                 const params = new URLSearchParams(window.location.search);
-                const shouldPlayIntro = (params.has('intro') || !localStorage.getItem('portfolio-intro-seen')) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                const shouldPlayIntro = (params.has('intro') || !sessionStorage.getItem('portfolio-intro-seen')) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                 if (shouldPlayIntro) {
                     document.documentElement.classList.add('intro-pending');
                 }
@@ -79,7 +79,6 @@
                     <span data-i18n="home.badge">Desenvolvedor de Software</span>
                 </div>
                 <h1 class="hero-title">
-                    <span class="title-line" data-i18n="home.titleLine">Olá, eu sou</span>
                     <span class="title-name" id="brandNameHero">Marcos Pereira</span>
                 </h1>
                 <p class="hero-subtitle" data-i18n="home.subtitle">Programador | Desenvolvedor de Software</p>
@@ -243,7 +242,7 @@
                         <h3>Neural Engine</h3>
                     </div>
                     <div class="project-image-wrapper">
-                        <img src="assets/img/neural-engine-interface.png" alt="Neural Engine - Interface" class="project-image" loading="lazy" decoding="async">
+                        <img src="assets/img/neural-engine-interface.png" alt="Neural Engine - Interface" class="project-image" loading="lazy" decoding="async" data-i18n-alt="home.projects.neuralAlt">
                     </div>
                     <p data-i18n="home.projects.neuralDescription">Neural Engine utiliza inteligência artificial avançada para atuar em atendimento empresarial diretamente no WhatsApp. Painel de configuração intuitivo permite personalização completa para atendimento ou suporte técnico. Desenvolvido em Python, gerencia conversas, cria filas de atendimento e responde de forma natural, utilizando modelos personalizados que garantem conformidade com as diretrizes da Meta. Em testes, conseguiu gerenciar atendimento de 100+ mensagens simultâneas sem gargalos, podendo ultrapassar bem mais, substituindo efetivamente equipes em massa.</p>
                     <a href="pages/neural-engine.html" class="btn btn-primary project-link" data-i18n="common.more">Saber mais</a>
@@ -256,10 +255,10 @@
                                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                             </svg>
                         </div>
-                        <h3>Outros Projetos</h3>
+                        <h3 data-i18n="home.projects.otherTitle">Outros Projetos</h3>
                     </div>
                     <div class="project-image-wrapper">
-                        <img src="assets/img/training-projects.png" alt="Projetos de Treinamento" class="project-image" loading="lazy" decoding="async">
+                        <img src="assets/img/training-projects.png" alt="Training Projects" class="project-image" loading="lazy" decoding="async" data-i18n-alt="home.projects.trainingAlt">
                     </div>
                     <p data-i18n="home.projects.otherDescription">Projetos desenvolvidos para otimizar processos e aumentar produtividade. Incluem painéis visuais interativos, integração de tecnologias avançadas e sistemas de processamento inteligente. Soluções práticas que combinam inovação tecnológica com funcionalidades reais para resultados mensuráveis.</p>
                     <a href="pages/other-projects.html" class="btn btn-primary project-link" data-i18n="common.more">Saber mais</a>
@@ -339,7 +338,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Marcos Pereira. Todos os direitos reservados.</p>
+            <p data-i18n="home.footer">&copy; 2024 Marcos Pereira. All rights reserved.</p>
         </div>
     </footer>
 

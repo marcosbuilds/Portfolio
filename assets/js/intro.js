@@ -10,7 +10,7 @@
 
     function hasSeenIntro() {
         try {
-            return localStorage.getItem(STORAGE_KEY) === 'true';
+            return sessionStorage.getItem(STORAGE_KEY) === 'true';
         } catch (error) {
             return false;
         }
@@ -18,7 +18,7 @@
 
     function markIntroSeen() {
         try {
-            localStorage.setItem(STORAGE_KEY, 'true');
+            sessionStorage.setItem(STORAGE_KEY, 'true');
         } catch (error) {
             console.warn('Intro preference could not be saved:', error);
         }
@@ -74,14 +74,14 @@
             }
         }, { once: true });
 
-        await delay(120);
-        await showWord(getText('intro.hey', 'hey'), 820);
+        await delay(80);
+        await showWord(getText('intro.hey', 'hey'), 700);
         if (introFinished) return;
-        await showWord(getText('intro.identity', 'Eu sou o'), 920);
+        await showWord(getText('intro.identity', 'i am'), 780);
         if (introFinished) return;
 
         screen.classList.add('is-exiting');
-        await delay(720);
+        await delay(560);
         finishIntro();
     }
 

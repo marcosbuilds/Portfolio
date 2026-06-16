@@ -12,8 +12,8 @@
 @keyframes siteReveal {
     from {
         opacity: 0;
-        transform: translateY(20px) scale(0.985);
-        filter: blur(10px);
+        transform: translateY(10px) scale(0.992);
+        filter: blur(3px);
     }
     to {
         opacity: 1;
@@ -44,13 +44,13 @@
 
 @keyframes introPulse {
     from {
-        letter-spacing: 0.08em;
+        letter-spacing: 0.04em;
         opacity: 0;
-        transform: translateY(22px) scale(0.96);
-        filter: blur(14px);
+        transform: translateY(12px) scale(0.985);
+        filter: blur(6px);
     }
     to {
-        letter-spacing: 0.01em;
+        letter-spacing: 0;
         opacity: 1;
         transform: translateY(0) scale(1);
         filter: blur(0);
@@ -94,8 +94,8 @@
     background: #000;
     color: #fff;
     pointer-events: auto;
-    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 0.56s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.56s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html.intro-pending .intro-screen {
@@ -121,17 +121,17 @@ html.intro-pending .intro-screen {
     line-height: 1;
     text-transform: lowercase;
     opacity: 0;
-    transform: translateY(22px) scale(0.96);
-    filter: blur(14px);
+    transform: translateY(12px) scale(0.985);
+    filter: blur(6px);
 }
 
 .intro-screen.is-visible .intro-word {
-    animation: introPulse 0.76s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: introPulse 0.64s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .intro-screen.is-exiting {
     opacity: 0;
-    transform: scale(1.04);
+    transform: scale(1.015);
 }
 
 html.intro-pending body.home-page {
@@ -146,16 +146,16 @@ html.intro-pending body.home-page > :not(.intro-screen) {
 }
 
 body.intro-complete > :not(.intro-screen) {
-    animation: siteReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: siteReveal 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .reveal {
     opacity: 0;
-    transform: translate3d(0, 28px, 0) scale(0.985);
-    filter: blur(8px);
-    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translate3d(0, 18px, 0) scale(0.992);
+    filter: blur(4px);
+    transition: opacity 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.68s cubic-bezier(0.22, 1, 0.36, 1);
     transition-delay: var(--reveal-delay, 0ms);
     will-change: opacity, transform, filter;
 }

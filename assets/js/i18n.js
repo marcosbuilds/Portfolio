@@ -1,5 +1,6 @@
 const portfolioI18n = (() => {
     const STORAGE_KEY = 'portfolio-language';
+    const DEFAULT_LANGUAGE = 'en';
     const SUPPORTED_LANGUAGES = ['pt', 'en'];
 
     const translations = {
@@ -8,7 +9,7 @@ const portfolioI18n = (() => {
             'language.current': 'Português',
             'theme.toggle': 'Alterar tema',
             'intro.hey': 'hey',
-            'intro.identity': 'Eu sou o',
+            'intro.identity': 'eu sou o',
             'common.backHome': 'Voltar para o início',
             'common.more': 'Saber mais',
             'common.projectsBack': 'Voltar aos Projetos',
@@ -49,7 +50,10 @@ const portfolioI18n = (() => {
             'home.skills.excel': 'Excel <small>(Procurando experiência)</small>',
             'home.projects.title': 'Projetos Pessoais',
             'home.projects.priority': 'Projeto Prioritário',
+            'home.projects.otherTitle': 'Outros Projetos',
             'home.projects.training': 'Projetos de Treinamento',
+            'home.projects.neuralAlt': 'Neural Engine - Interface',
+            'home.projects.trainingAlt': 'Projetos de Treinamento',
             'home.projects.neuralDescription': 'Neural Engine utiliza inteligência artificial avançada para atuar em atendimento empresarial diretamente no WhatsApp. Painel de configuração intuitivo permite personalização completa para atendimento ou suporte técnico. Desenvolvido em Python, gerencia conversas, cria filas de atendimento e responde de forma natural, utilizando modelos personalizados que garantem conformidade com as diretrizes da Meta. Em testes, conseguiu gerenciar atendimento de 100+ mensagens simultâneas sem gargalos, podendo ultrapassar bem mais, substituindo efetivamente equipes em massa.',
             'home.projects.otherDescription': 'Projetos desenvolvidos para otimizar processos e aumentar produtividade. Incluem painéis visuais interativos, integração de tecnologias avançadas e sistemas de processamento inteligente. Soluções práticas que combinam inovação tecnológica com funcionalidades reais para resultados mensuráveis.',
             'home.projects.notePrefix': 'Os projetos podem ser visualizados mediante solicitação através do',
@@ -62,6 +66,7 @@ const portfolioI18n = (() => {
             'home.lost.apis': 'Integração de APIs',
             'home.lost.apisDescription': 'Desenvolvimento de sistemas que integram múltiplas APIs para criar soluções complexas e escaláveis. Experiência em combinação de diferentes serviços, processamento de dados e implementação de arquiteturas robustas para aplicações empresariais.',
             'home.lost.note': '<strong>Nota:</strong> Estes projetos foram perdidos, mas demonstram experiência prática em desenvolvimento de soluções técnicas complexas e integração de tecnologias avançadas.',
+            'home.footer': '© 2024 Marcos Pereira. Todos os direitos reservados.',
 
             'about.title': 'Sobre mim',
             'about.intro': 'Me chamo Marcos Pereira, nascido em 2008 com uma vontade intensa em atuar prioritariamente na tecnologia.',
@@ -70,6 +75,9 @@ const portfolioI18n = (() => {
             'about.messages': 'Mensagens simultâneas',
             'about.learning': 'Vontade de aprender',
             'about.journey': 'Minha Jornada',
+            'about.timeline1Year': '~2023 (15 anos)',
+            'about.timeline2Year': '2023-2024',
+            'about.timeline3Year': '2025',
             'about.timeline1': 'Desde aproximadamente os 15 anos, venho mexendo e procurando aprender cada vez mais na tecnologia, principalmente em IAs. Comecei desenvolvendo minis projetos de sites, webviews usando HTML, CSS e JavaScript.',
             'about.timeline2': 'Quando aprendi o suficiente, decidi atuar em áreas mais próximas de IAs, por conta da surpresa que o ChatGPT me fez sentir. Criar algo, dar vida é uma sensação única. Mesmo que, de fato, eu não crie do absoluto zero ainda, usando modelos de linguagem natural consegui alavancar e fazer vários projetos pessoais que tiveram bons resultados.',
             'about.timeline3': 'Desenvolvi projetos como o Neural Engine, um sistema de atendimento inteligente que consegue gerenciar 100+ mensagens simultâneas. Continuo explorando novas tecnologias e aprimorando minhas habilidades em desenvolvimento de software e integração de IAs.',
@@ -151,7 +159,7 @@ const portfolioI18n = (() => {
             'language.current': 'English',
             'theme.toggle': 'Change theme',
             'intro.hey': 'hey',
-            'intro.identity': 'I am',
+            'intro.identity': 'i am',
             'common.backHome': 'Back to home',
             'common.more': 'Learn more',
             'common.projectsBack': 'Back to Projects',
@@ -192,7 +200,10 @@ const portfolioI18n = (() => {
             'home.skills.excel': 'Excel <small>(Looking for experience)</small>',
             'home.projects.title': 'Personal Projects',
             'home.projects.priority': 'Priority Project',
+            'home.projects.otherTitle': 'Other Projects',
             'home.projects.training': 'Training Projects',
+            'home.projects.neuralAlt': 'Neural Engine - Interface',
+            'home.projects.trainingAlt': 'Training Projects',
             'home.projects.neuralDescription': 'Neural Engine uses advanced artificial intelligence to work in business support directly on WhatsApp. An intuitive configuration panel enables complete customization for customer service or technical support. Built in Python, it manages conversations, creates service queues, and responds naturally with custom models that keep interactions aligned with Meta guidelines. In tests, it handled 100+ simultaneous messages without bottlenecks and can scale further, effectively replacing high-volume support teams.',
             'home.projects.otherDescription': 'Projects built to optimize processes and increase productivity. They include interactive visual dashboards, advanced technology integration, and intelligent processing systems. Practical solutions that combine technological innovation with real functionality for measurable results.',
             'home.projects.notePrefix': 'Projects can be viewed on request through',
@@ -205,6 +216,7 @@ const portfolioI18n = (() => {
             'home.lost.apis': 'API Integration',
             'home.lost.apisDescription': 'Development of systems that integrate multiple APIs to create complex and scalable solutions. Experience combining different services, processing data, and implementing robust architectures for business applications.',
             'home.lost.note': '<strong>Note:</strong> These projects were lost, but they demonstrate hands-on experience developing complex technical solutions and integrating advanced technologies.',
+            'home.footer': '© 2024 Marcos Pereira. All rights reserved.',
 
             'about.title': 'About me',
             'about.intro': 'My name is Marcos Pereira, born in 2008 with a strong drive to work primarily in technology.',
@@ -213,6 +225,9 @@ const portfolioI18n = (() => {
             'about.messages': 'Simultaneous messages',
             'about.learning': 'Will to learn',
             'about.journey': 'My Journey',
+            'about.timeline1Year': '~2023 (age 15)',
+            'about.timeline2Year': '2023-2024',
+            'about.timeline3Year': '2025',
             'about.timeline1': 'Since I was around 15, I have been exploring and learning more and more about technology, especially AI. I started by building mini website projects and webviews with HTML, CSS, and JavaScript.',
             'about.timeline2': 'Once I had learned enough, I decided to work closer to AI because of the impact ChatGPT had on me. Creating something and giving it life is a unique feeling. Even though I still do not build everything from absolute zero, natural language models helped me accelerate and build several personal projects with strong results.',
             'about.timeline3': 'I developed projects such as Neural Engine, an intelligent support system that can manage 100+ simultaneous messages. I continue exploring new technologies and improving my software development and AI integration skills.',
@@ -302,11 +317,17 @@ const portfolioI18n = (() => {
         const params = new URLSearchParams(window.location.search);
         const urlLanguage = params.get('lang');
         if (urlLanguage) {
-            return normalizeLanguage(urlLanguage);
+            const nextLanguage = normalizeLanguage(urlLanguage);
+            try {
+                sessionStorage.setItem(STORAGE_KEY, nextLanguage);
+            } catch (error) {
+                console.warn('Language preference unavailable:', error);
+            }
+            return nextLanguage;
         }
 
         try {
-            const savedLanguage = localStorage.getItem(STORAGE_KEY);
+            const savedLanguage = sessionStorage.getItem(STORAGE_KEY);
             if (savedLanguage && SUPPORTED_LANGUAGES.includes(savedLanguage)) {
                 return savedLanguage;
             }
@@ -314,7 +335,7 @@ const portfolioI18n = (() => {
             console.warn('Language preference unavailable:', error);
         }
 
-        return normalizeLanguage(navigator.language || 'pt-BR');
+        return DEFAULT_LANGUAGE;
     }
 
     function translate(key) {
@@ -367,7 +388,7 @@ const portfolioI18n = (() => {
 
         if (options.persist !== false) {
             try {
-                localStorage.setItem(STORAGE_KEY, currentLanguage);
+                sessionStorage.setItem(STORAGE_KEY, currentLanguage);
             } catch (error) {
                 console.warn('Language preference could not be saved:', error);
             }
