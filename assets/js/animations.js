@@ -82,46 +82,24 @@
         }, { passive: true });
     }
 
-    function initBackgroundCursor() {
-        if (prefersReducedMotion || !window.matchMedia('(hover: hover)').matches) return;
+    function initProjectNetworks() {
+        const cards = [...document.querySelectorAll('.project-card')]
+            .filter((card) => card.querySelector('.project-network'));
 
-        const root = document.documentElement;
-        let targetX = window.innerWidth / 2;
-        let targetY = window.innerHeight * 0.45;
-        let currentX = targetX;
-        let currentY = targetY;
-        let frameId = null;
+        cards.forEach((card) => {
+            const activate = () => card.classList.add('is-network-active');
+            const deactivate = () => card.classList.remove('is-network-active');
 
-        function render() {
-            currentX += (targetX - currentX) * 0.12;
-            currentY += (targetY - currentY) * 0.12;
-            root.style.setProperty('--cursor-x', `${currentX.toFixed(1)}px`);
-            root.style.setProperty('--cursor-y', `${currentY.toFixed(1)}px`);
-
-            if (Math.abs(targetX - currentX) > 0.2 || Math.abs(targetY - currentY) > 0.2) {
-                frameId = window.requestAnimationFrame(render);
-            } else {
-                frameId = null;
-            }
-        }
-
-        function requestRender() {
-            if (frameId === null) {
-                frameId = window.requestAnimationFrame(render);
-            }
-        }
-
-        window.addEventListener('pointermove', (event) => {
-            targetX = event.clientX;
-            targetY = event.clientY;
-            requestRender();
-        }, { passive: true });
-
-        window.addEventListener('resize', () => {
-            targetX = window.innerWidth / 2;
-            targetY = window.innerHeight * 0.45;
-            requestRender();
-        }, { passive: true });
+            card.addEventListener('pointerenter', activate, { passive: true });
+            card.addEventListener('pointermove', activate, { passive: true });
+            card.addEventListener('pointerleave', deactivate, { passive: true });
+            card.addEventListener('focusin', activate);
+            card.addEventListener('focusout', (event) => {
+                if (!card.contains(event.relatedTarget)) {
+                    deactivate();
+                }
+            });
+        });
     }
 
     function init() {
@@ -129,7 +107,7 @@
         initReveal();
         initPointerGlow();
         initHeroDepth();
-        initBackgroundCursor();
+        initProjectNetworks();
     }
 
     if (document.readyState === 'loading') {

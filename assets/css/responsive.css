@@ -140,13 +140,30 @@
         image-rendering: high-quality;
     }
 
-    .project-card:hover .project-image {
-        transform: scale(1.25) translateY(-20px);
-        z-index: 1000;
+    .project-card:hover .project-image,
+    .project-card:focus-within .project-image,
+    .project-card.is-network-active .project-image {
+        transform: scale(1.03) translateY(0);
+        z-index: 1;
     }
 
     .project-image-wrapper {
         z-index: 5;
+    }
+
+    .project-network {
+        --network-center-y: 54%;
+    }
+
+    .network-core {
+        min-width: min(78%, 12rem);
+        min-height: 2.4rem;
+        padding: 0.58rem 0.78rem;
+    }
+
+    .network-node {
+        min-height: 1.85rem;
+        padding: 0.4rem 0.58rem;
     }
 
     .project-header {

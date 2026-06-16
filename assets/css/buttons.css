@@ -44,12 +44,12 @@
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 4px 20px color-mix(in srgb, var(--primary-color) 40%, transparent);
 }
 
 .btn-primary:hover {
     transform: translateY(-4px) scale(1.015);
-    box-shadow: 0 8px 30px rgba(249, 115, 22, 0.6);
+    box-shadow: 0 8px 30px color-mix(in srgb, var(--primary-color) 60%, transparent);
 }
 
 .btn-secondary {
@@ -61,7 +61,7 @@
 .btn-secondary:hover {
     background: var(--surface-color);
     transform: translateY(-4px) scale(1.015);
-    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 30px color-mix(in srgb, var(--accent-color) 30%, transparent);
 }
 
 .btn-whatsapp:hover {

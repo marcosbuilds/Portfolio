@@ -73,7 +73,7 @@
         box-shadow: 0 0 0 4px var(--primary-color);
     }
     50% {
-        box-shadow: 0 0 0 8px rgba(249, 115, 22, 0.3);
+        box-shadow: 0 0 0 8px color-mix(in srgb, var(--primary-color) 30%, transparent);
     }
 }
 

@@ -11,6 +11,8 @@ Site estático do portfólio de Marcos Pereira. O foco é apresentar habilidades
 - A introdução usa `sessionStorage` com a chave `portfolio-intro-seen`.
 - A sequência da introdução é `hey` e depois `i am`.
 - A home não mostra a frase "Olá, eu sou" depois da introdução.
+- Os cards principais de projeto exibem um grafo leve no hover/focus, com tecnologias conectadas ao centro do projeto.
+- O grafo do Neural Engine mostra Python, C++ e C#.
 - O botão de tema continua usando `localStorage` com a chave `portfolio-theme`.
 - Os comentários continuam usando `localStorage` com a chave `portfolioComments`.
 
@@ -39,6 +41,9 @@ Site estático do portfólio de Marcos Pereira. O foco é apresentar habilidades
 - Links com `target="_blank"` devem usar `rel="noopener noreferrer"`.
 - Animações devem respeitar `prefers-reduced-motion`.
 - Movimento contínuo deve usar `requestAnimationFrame`.
+- Efeitos visuais devem usar variáveis de tema, como `--primary-color`, `--secondary-color` e `--accent-color`.
+- Não usar animação global presa ao cursor no background. Use interações locais em cards ou componentes.
+- O grafo de projetos fica dentro da área de imagem do card para não deslocar a grade.
 - Texto de interface deve entrar no sistema de tradução por `data-i18n`, `data-i18n-html`, `data-i18n-alt`, `data-i18n-placeholder` ou `data-i18n-aria-label`.
 - Textos longos devem quebrar dentro do próprio container.
 
@@ -52,7 +57,7 @@ assets/css/header.css        Header, menu e seletor PT/EN
 assets/css/sections.css      Cards, seções e estados de hover
 assets/js/i18n.js            Tradução PT/EN e estado de idioma por sessão
 assets/js/intro.js           Introdução de primeira abertura por sessão
-assets/js/animations.js      Reveals, hover glow, parallax leve e cursor glow
+assets/js/animations.js      Reveals, hover glow local e parallax leve
 assets/js/theme.js           Troca de tema
 assets/js/header.js          Dropdown e scroll do header
 ```
@@ -75,6 +80,8 @@ Também verificar:
 - Sem link externo sem `noopener noreferrer`.
 - Sem erro no console do navegador.
 - Sem overflow horizontal no mobile.
+- Hover/focus dos cards principais deve revelar o grafo sem quebrar layout.
+- Trocar o tema deve alterar brilho, linhas e nós do grafo.
 - Todas as páginas principais em inglês sem texto português visível.
 
 ## Comentários
