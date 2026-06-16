@@ -11,7 +11,7 @@ Este repositório guarda meu site pessoal. Eu mantenho tudo estático para deixa
 - Eu salvo esse estado em `sessionStorage`, na chave `portfolio-intro-seen`.
 - A sequência da introdução é `hey` e depois `i am`.
 - A home não mostra a frase "Olá, eu sou" depois da introdução.
-- Os cards principais têm um pequeno painel de conexões abaixo da imagem.
+- Os cards principais mostram uma árvore de conexões abaixo da imagem.
 - O Neural Engine conecta Python, C++ e C#.
 - Os nós usam logos locais, sem buscar imagens externas.
 - O tema usa `localStorage`, na chave `portfolio-theme`.
@@ -46,6 +46,8 @@ Este repositório guarda meu site pessoal. Eu mantenho tudo estático para deixa
 - Efeitos visuais devem usar as variáveis de tema.
 - Não colocar animação presa ao cursor no fundo da página.
 - O grafo dos projetos fica em área própria do card, nunca sobre a imagem.
+- A árvore de tecnologias não deve parecer um container separado.
+- As linguagens aparecem como logo e texto, sem chip ou caixa visível.
 - Todo texto de interface deve passar pelo sistema de tradução.
 - Texto longo deve quebrar dentro do próprio container.
 

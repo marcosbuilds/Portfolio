@@ -300,45 +300,28 @@
 .project-network {
     position: relative;
     display: grid;
-    gap: 1.15rem;
-    padding: 1.1rem;
-    margin-bottom: 1.5rem;
-    border-radius: calc(var(--border-radius) - 2px);
-    background:
-        radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--primary-color) 16%, transparent), transparent 42%),
-        linear-gradient(135deg, color-mix(in srgb, var(--surface-color) 78%, var(--primary-color)), color-mix(in srgb, var(--surface-color) 82%, var(--accent-color)));
-    border: 1px solid color-mix(in srgb, var(--primary-color) 24%, var(--glass-border));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    gap: 2.4rem;
+    padding: 0.25rem 0 0.55rem;
+    margin: 0.15rem 0 1.5rem;
     pointer-events: none;
-    overflow: hidden;
-    opacity: 0.88;
+    overflow: visible;
+    opacity: 0.82;
     transform: translateY(0);
     transition:
         opacity 0.28s ease,
-        border-color 0.28s ease,
-        box-shadow 0.28s ease,
         transform 0.28s ease;
 }
 
 .project-network::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(color-mix(in srgb, var(--primary-color) 10%, transparent) 1px, transparent 1px),
-        linear-gradient(90deg, color-mix(in srgb, var(--primary-color) 10%, transparent) 1px, transparent 1px);
-    background-size: 28px 28px;
-    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 24%, transparent 78%);
-    mask-image: radial-gradient(circle at 50% 50%, #000 24%, transparent 78%);
-    opacity: 0.28;
+    content: none;
 }
 
 .network-links {
     position: absolute;
-    inset: 0;
+    inset: 1.55rem 0 2.5rem;
     z-index: 1;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 4.05rem);
     pointer-events: none;
 }
 
@@ -347,13 +330,19 @@
     stroke: var(--primary-color);
     stroke-width: 1.8;
     stroke-linecap: round;
+    stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
-    opacity: 0.36;
+    opacity: 0.42;
     stroke-dasharray: 1;
-    stroke-dashoffset: 0.46;
+    stroke-dashoffset: 0.14;
     transition:
         opacity 0.28s ease,
         stroke-dashoffset 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.path-trunk,
+.path-branch {
+    stroke: color-mix(in srgb, var(--primary-color) 76%, var(--accent-color));
 }
 
 .path-center {
@@ -364,6 +353,18 @@
     stroke: var(--secondary-color);
 }
 
+.network-dot {
+    fill: var(--bg-color);
+    stroke: var(--primary-color);
+    stroke-width: 1.4;
+    vector-effect: non-scaling-stroke;
+    opacity: 0.72;
+    transition:
+        fill 0.28s ease,
+        opacity 0.28s ease,
+        stroke 0.28s ease;
+}
+
 .network-core {
     position: relative;
     z-index: 2;
@@ -371,20 +372,31 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: min(76%, 14rem);
-    min-height: 2.75rem;
-    padding: 0.7rem 1rem;
-    border-radius: 999px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    color: var(--text-primary);
     font-size: clamp(0.78rem, 2.2vw, 0.95rem);
     font-weight: 800;
-    box-shadow: 0 12px 28px color-mix(in srgb, var(--primary-color) 28%, transparent);
-    opacity: 0.92;
+    text-shadow: 0 0 18px color-mix(in srgb, var(--primary-color) 32%, transparent);
+    opacity: 0.9;
     transition:
         opacity 0.24s ease,
-        transform 0.3s ease,
-        box-shadow 0.24s ease;
+        color 0.24s ease,
+        transform 0.3s ease;
+}
+
+.network-core::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -0.65rem;
+    width: 0.36rem;
+    height: 0.36rem;
+    border-radius: 50%;
+    background: var(--primary-color);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--primary-color) 54%, transparent);
+    transform: translateX(-50%);
 }
 
 .network-nodes {
@@ -393,35 +405,32 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.75rem;
-    align-items: stretch;
-    margin-top: 0.15rem;
+    align-items: start;
+    margin-top: 0;
 }
 
 .network-node {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.45rem;
+    gap: 0.4rem;
     min-width: 0;
-    min-height: 2.35rem;
-    padding: 0.42rem 0.55rem;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--bg-color) 76%, var(--primary-color));
-    border: 1px solid color-mix(in srgb, var(--primary-color) 28%, var(--glass-border));
+    min-height: 0;
+    padding: 0;
     color: var(--text-primary);
-    font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+    font-size: clamp(0.72rem, 1.7vw, 0.82rem);
     font-weight: 700;
-    line-height: 1;
+    line-height: 1.2;
     letter-spacing: 0;
     text-align: center;
-    box-shadow: 0 8px 20px color-mix(in srgb, var(--primary-color) 14%, transparent);
-    opacity: 0.5;
+    text-shadow: 0 0 14px rgba(0, 0, 0, 0.38);
+    opacity: 0.74;
     transform: translateY(0);
     transition:
         opacity 0.24s ease,
-        transform 0.3s ease,
-        border-color 0.24s ease,
-        box-shadow 0.24s ease;
+        color 0.24s ease,
+        transform 0.3s ease;
 }
 
 .network-node span {
@@ -430,13 +439,17 @@
 }
 
 .network-logo {
-    width: 1.35rem;
-    height: 1.35rem;
-    border-radius: 0.38rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 0;
     object-fit: contain;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 0.12rem;
+    background: transparent;
+    padding: 0;
     flex-shrink: 0;
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.32));
+    transition:
+        filter 0.24s ease,
+        transform 0.3s ease;
 }
 
 .neural-network .network-path {
@@ -447,11 +460,7 @@
 .project-card:focus-within .project-network,
 .project-card.is-network-active .project-network {
     opacity: 1;
-    border-color: color-mix(in srgb, var(--primary-color) 46%, var(--glass-border));
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 12px 30px color-mix(in srgb, var(--primary-color) 14%, transparent);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 .project-card:hover .network-core,
@@ -461,8 +470,7 @@
 .project-card:focus-within .network-node,
 .project-card.is-network-active .network-node {
     opacity: 1;
-    border-color: color-mix(in srgb, var(--primary-color) 54%, var(--glass-border));
-    box-shadow: 0 10px 24px color-mix(in srgb, var(--primary-color) 22%, transparent);
+    color: var(--text-primary);
 }
 
 .project-card:hover .network-core,
@@ -477,11 +485,25 @@
     transform: translateY(-2px);
 }
 
+.project-card:hover .network-logo,
+.project-card:focus-within .network-logo,
+.project-card.is-network-active .network-logo {
+    filter: drop-shadow(0 10px 16px color-mix(in srgb, var(--primary-color) 26%, rgba(0, 0, 0, 0.26)));
+    transform: translateY(-1px);
+}
+
 .project-card:hover .network-path,
 .project-card:focus-within .network-path,
 .project-card.is-network-active .network-path {
-    opacity: 1;
+    opacity: 0.9;
     stroke-dashoffset: 0;
+}
+
+.project-card:hover .network-dot,
+.project-card:focus-within .network-dot,
+.project-card.is-network-active .network-dot {
+    fill: var(--primary-color);
+    opacity: 1;
 }
 
 .project-card:hover .path-center,
