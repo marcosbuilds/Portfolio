@@ -130,7 +130,7 @@
     }
 
     .project-image-wrapper {
-        margin-bottom: 1rem;
+        margin-bottom: 0.35rem;
     }
 
     .project-image {
@@ -147,13 +147,12 @@
     }
 
     .project-network {
-        gap: 2rem;
-        padding: 0.15rem 0 0.35rem;
+        padding: 3.55rem 0 0.35rem;
         margin-bottom: 1rem;
     }
 
-    .network-core {
-        font-size: 0.82rem;
+    .network-links {
+        height: calc(100% - 2.35rem);
     }
 
     .network-nodes {

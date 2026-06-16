@@ -242,7 +242,7 @@
 
 .project-image-wrapper {
     width: 100%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.45rem;
     border-radius: var(--border-radius);
     overflow: hidden;
     position: relative;
@@ -300,9 +300,8 @@
 .project-network {
     position: relative;
     display: grid;
-    gap: 2.4rem;
-    padding: 0.25rem 0 0.55rem;
-    margin: 0.15rem 0 1.5rem;
+    padding: 4.25rem 0 0.55rem;
+    margin: 0 0 1.5rem;
     pointer-events: none;
     overflow: visible;
     opacity: 0.82;
@@ -318,11 +317,14 @@
 
 .network-links {
     position: absolute;
-    inset: 1.55rem 0 2.5rem;
+    top: -0.25rem;
+    right: 0;
+    left: 0;
     z-index: 1;
     width: 100%;
-    height: calc(100% - 4.05rem);
+    height: calc(100% - 2.65rem);
     pointer-events: none;
+    overflow: hidden;
 }
 
 .network-path {
@@ -332,17 +334,8 @@
     stroke-linecap: round;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
-    opacity: 0.42;
-    stroke-dasharray: 1;
-    stroke-dashoffset: 0.14;
-    transition:
-        opacity 0.28s ease,
-        stroke-dashoffset 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.path-trunk,
-.path-branch {
-    stroke: color-mix(in srgb, var(--primary-color) 76%, var(--accent-color));
+    opacity: 0.56;
+    transition: opacity 0.28s ease;
 }
 
 .path-center {
@@ -353,52 +346,6 @@
     stroke: var(--secondary-color);
 }
 
-.network-dot {
-    fill: var(--bg-color);
-    stroke: var(--primary-color);
-    stroke-width: 1.4;
-    vector-effect: non-scaling-stroke;
-    opacity: 0.72;
-    transition:
-        fill 0.28s ease,
-        opacity 0.28s ease,
-        stroke 0.28s ease;
-}
-
-.network-core {
-    position: relative;
-    z-index: 2;
-    justify-self: center;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 0;
-    min-height: 0;
-    padding: 0;
-    color: var(--text-primary);
-    font-size: clamp(0.78rem, 2.2vw, 0.95rem);
-    font-weight: 800;
-    text-shadow: 0 0 18px color-mix(in srgb, var(--primary-color) 32%, transparent);
-    opacity: 0.9;
-    transition:
-        opacity 0.24s ease,
-        color 0.24s ease,
-        transform 0.3s ease;
-}
-
-.network-core::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -0.65rem;
-    width: 0.36rem;
-    height: 0.36rem;
-    border-radius: 50%;
-    background: var(--primary-color);
-    box-shadow: 0 0 18px color-mix(in srgb, var(--primary-color) 54%, transparent);
-    transform: translateX(-50%);
-}
-
 .network-nodes {
     position: relative;
     z-index: 2;
@@ -406,7 +353,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.75rem;
     align-items: start;
-    margin-top: 0;
+    margin-top: 0.15rem;
 }
 
 .network-node {
@@ -463,20 +410,11 @@
     transform: translateY(-1px);
 }
 
-.project-card:hover .network-core,
-.project-card:focus-within .network-core,
-.project-card.is-network-active .network-core,
 .project-card:hover .network-node,
 .project-card:focus-within .network-node,
 .project-card.is-network-active .network-node {
     opacity: 1;
     color: var(--text-primary);
-}
-
-.project-card:hover .network-core,
-.project-card:focus-within .network-core,
-.project-card.is-network-active .network-core {
-    transform: translateY(-1px);
 }
 
 .project-card:hover .network-node,
@@ -496,14 +434,6 @@
 .project-card:focus-within .network-path,
 .project-card.is-network-active .network-path {
     opacity: 0.9;
-    stroke-dashoffset: 0;
-}
-
-.project-card:hover .network-dot,
-.project-card:focus-within .network-dot,
-.project-card.is-network-active .network-dot {
-    fill: var(--primary-color);
-    opacity: 1;
 }
 
 .project-card:hover .path-center,

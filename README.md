@@ -14,6 +14,8 @@ Este repositório guarda meu site pessoal. Eu mantenho tudo estático para deixa
 - Os cards principais mostram uma árvore de conexões abaixo da imagem.
 - O Neural Engine conecta Python, C++ e C#.
 - Os nós usam logos locais, sem buscar imagens externas.
+- A árvore nasce da imagem do projeto e não repete o nome do projeto.
+- As linhas terminam nos logos das tecnologias; não uso círculos soltos como nós visuais.
 - O tema usa `localStorage`, na chave `portfolio-theme`.
 - Os comentários usam `localStorage`, na chave `portfolioComments`.
 
@@ -47,6 +49,8 @@ Este repositório guarda meu site pessoal. Eu mantenho tudo estático para deixa
 - Não colocar animação presa ao cursor no fundo da página.
 - O grafo dos projetos fica em área própria do card, nunca sobre a imagem.
 - A árvore de tecnologias não deve parecer um container separado.
+- A árvore não deve repetir o nome do projeto no meio da conexão.
+- A conexão deve sair da imagem do projeto e chegar nos logos sem linha quebrada.
 - As linguagens aparecem como logo e texto, sem chip ou caixa visível.
 - Todo texto de interface deve passar pelo sistema de tradução.
 - Texto longo deve quebrar dentro do próprio container.
